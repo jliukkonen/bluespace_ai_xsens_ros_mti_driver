@@ -68,6 +68,7 @@
 #include "messagepublishers/packetcallback.h"
 #include "messagepublishers/accelerationpublisher.h"
 #include "messagepublishers/angularvelocitypublisher.h"
+#include "messagepublishers/angularvelocityhighratepublisher.h"
 #include "messagepublishers/freeaccelerationpublisher.h"
 #include "messagepublishers/gnsspublisher.h"
 #include "messagepublishers/imupublisher.h"
@@ -135,6 +136,10 @@ void XdaInterface::registerPublishers()
 	{
 		registerCallback(new AngularVelocityPublisher(node));
 	}
+        if (get_parameter("pub_angular_velocity_high_rate", should_publish) && should_publish)
+        {
+          registerCallback(new AngularVelocityHighRatePublisher(node));
+        }
 	if (get_parameter("pub_mag", should_publish) && should_publish)
 	{
 		registerCallback(new MagneticFieldPublisher(node));
