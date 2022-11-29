@@ -345,6 +345,7 @@ void XdaInterface::declareCommonParameters()
 	declare_parameter("pub_quaternion", should_publish);
 	declare_parameter("pub_acceleration", should_publish);
 	declare_parameter("pub_angular_velocity", should_publish);
+        declare_parameter("pub_angular_velocity_high_rate", should_publish);
 	declare_parameter("pub_mag", should_publish);
 	declare_parameter("pub_dq", should_publish);
 	declare_parameter("pub_dv", should_publish);
