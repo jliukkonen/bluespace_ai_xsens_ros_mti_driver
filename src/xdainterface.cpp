@@ -67,6 +67,7 @@
 
 #include "messagepublishers/packetcallback.h"
 #include "messagepublishers/accelerationpublisher.h"
+#include "messagepublishers/accelerationhighratepublisher.h"
 #include "messagepublishers/angularvelocitypublisher.h"
 #include "messagepublishers/angularvelocityhighratepublisher.h"
 #include "messagepublishers/freeaccelerationpublisher.h"
@@ -132,6 +133,10 @@ void XdaInterface::registerPublishers()
 	{
 		registerCallback(new AccelerationPublisher(node));
 	}
+        if (get_parameter("pub_acceleration_high_rate", should_publish) && should_publish)
+        {
+                registerCallback(new AccelerationHighRatePublisher(node));
+        }
 	if (get_parameter("pub_angular_velocity", should_publish) && should_publish)
 	{
 		registerCallback(new AngularVelocityPublisher(node));
@@ -344,7 +349,8 @@ void XdaInterface::declareCommonParameters()
 	declare_parameter("pub_imu", should_publish);
 	declare_parameter("pub_quaternion", should_publish);
 	declare_parameter("pub_acceleration", should_publish);
-	declare_parameter("pub_angular_velocity", should_publish);
+        declare_parameter("pub_acceleration_high_rate", should_publish);
+        declare_parameter("pub_angular_velocity", should_publish);
         declare_parameter("pub_angular_velocity_high_rate", should_publish);
 	declare_parameter("pub_mag", should_publish);
 	declare_parameter("pub_dq", should_publish);

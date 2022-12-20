@@ -30,8 +30,9 @@
         pub_mag: false
         pub_angular_velocity: false
         pub_angular_velocity_high_rate: true
-        pub_acceleration: true
-        pub_free_acceleration: true
+        pub_acceleration: false
+        pub_acceleration_high_rate: true
+        pub_free_acceleration: false
         pub_dq: false
         pub_dv: false
         pub_sampletime: true
